@@ -404,9 +404,9 @@ export default function Home() {
 
       {/* F. FAQ SECTION */}
       < section className="py-24 px-6 md:px-20 bg-[#0D0D12] relative z-20 border-t border-white/5" >
-        <div className="max-w-3xl mx-auto flex flex-col items-center">
+        <div className="max-w-5xl mx-auto flex flex-col items-center">
           <h2 className="font-['Space_Grotesk',sans-serif] text-4xl md:text-5xl font-bold mb-12 text-center">Frequently Asked <span className="text-[#48CFCB]">Questions</span></h2>
-          <div className="w-full flex flex-col gap-4">
+          <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 items-start">
             {faqs.map((faq, index) => (
               <div
                 key={index}

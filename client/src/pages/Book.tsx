@@ -142,7 +142,7 @@ export default function Book() {
 
     setIsSubmitting(true);
     try {
-      const response = await fetch("https://hook.us2.make.com/2qk018h9agzh2obxi965lejo04w8a65e", {
+      const response = await fetch("/api/book", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

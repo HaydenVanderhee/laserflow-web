@@ -86,10 +86,20 @@ declare global {
   }
 }
 
-const API_KEY = import.meta.env.VITE_FRONTEND_FORGE_API_KEY;
-const FORGE_BASE_URL =
-  import.meta.env.VITE_FRONTEND_FORGE_API_URL ||
-  "https://forge.butterfly-effect.dev";
+import { z } from "zod";
+
+const envSchema = z.object({
+  VITE_FRONTEND_FORGE_API_KEY: z.string().min(1, "Missing VITE_FRONTEND_FORGE_API_KEY"),
+  VITE_FRONTEND_FORGE_API_URL: z.string().url().optional(),
+});
+
+const parsedEnv = envSchema.parse({
+  VITE_FRONTEND_FORGE_API_KEY: import.meta.env.VITE_FRONTEND_FORGE_API_KEY,
+  VITE_FRONTEND_FORGE_API_URL: import.meta.env.VITE_FRONTEND_FORGE_API_URL,
+});
+
+const API_KEY = parsedEnv.VITE_FRONTEND_FORGE_API_KEY;
+const FORGE_BASE_URL = parsedEnv.VITE_FRONTEND_FORGE_API_URL || "https://forge.butterfly-effect.dev";
 const MAPS_PROXY_URL = `${FORGE_BASE_URL}/v1/maps/proxy`;
 
 function loadMapScript() {
