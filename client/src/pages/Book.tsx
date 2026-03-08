@@ -43,6 +43,8 @@ interface FormData {
   businessName: string;
   websiteUrl: string;
   runAds: string;
+  adSpending: string;
+  adManager: string;
   // Step 2: Business Details
   monthlyRevenue: string;
   businessSize: string;
@@ -67,6 +69,8 @@ const initialFormData: FormData = {
   businessName: "",
   websiteUrl: "",
   runAds: "",
+  adSpending: "",
+  adManager: "",
   monthlyRevenue: "",
   businessSize: "",
   currentSoftware: "",
@@ -401,6 +405,47 @@ export default function Book() {
                   </div>
                 </RadioGroup>
               </div>
+
+              {formData.runAds === "yes" && (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                  <div className="space-y-3">
+                    <Label className="text-foreground font-semibold">Monthly ad spending</Label>
+                    <Select
+                      value={formData.adSpending}
+                      onValueChange={(value) => updateFormData("adSpending", value)}
+                    >
+                      <SelectTrigger className="bg-input border-border">
+                        <SelectValue placeholder="Select spending range" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="under-1k">Under $1,000</SelectItem>
+                        <SelectItem value="1k-3k">$1,000 - $3,000</SelectItem>
+                        <SelectItem value="3k-5k">$3,000 - $5,000</SelectItem>
+                        <SelectItem value="5k-10k">$5,000 - $10,000</SelectItem>
+                        <SelectItem value="10k+">$10,000+</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  <div className="space-y-3">
+                    <Label className="text-foreground font-semibold">Who manages your ads?</Label>
+                    <Select
+                      value={formData.adManager}
+                      onValueChange={(value) => updateFormData("adManager", value)}
+                    >
+                      <SelectTrigger className="bg-input border-border">
+                        <SelectValue placeholder="Select who manages ads" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="in-house">We manage them ourselves</SelectItem>
+                        <SelectItem value="agency">An ads agency</SelectItem>
+                        <SelectItem value="freelancer">A freelancer/contractor</SelectItem>
+                        <SelectItem value="mix">Mix of in-house and external</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </div>
+              )}
             </div>
           )}
 
