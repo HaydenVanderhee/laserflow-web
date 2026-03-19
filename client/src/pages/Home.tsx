@@ -410,7 +410,7 @@ export default function Home() {
             {faqs.map((faq, index) => (
               <div
                 key={index}
-                className="bg-[#12121A] border border-[#2A2A35] rounded-2xl overflow-hidden transition-all duration-300 hover:border-[#48CFCB]/30"
+                className="bg-[#12121A] border border-[#2A2A35] rounded-2xl overflow-hidden transition-all duration-300 hover:border-[#48CFCB]/50 hover:ring-1 hover:ring-[#48CFCB]/50"
               >
                 <button
                   onClick={() => setOpenFaq(openFaq === index ? null : index)}
