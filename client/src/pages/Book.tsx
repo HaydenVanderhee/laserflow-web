@@ -36,11 +36,6 @@ interface FormData {
   email: string;
   phone: string;
   businessName: string;
-  runAds: string;
-  adSpending: string;
-  adManager: string;
-  monthlyRevenue: string;
-  additionalInfo: string;
   agreedToTerms: boolean;
 }
 
@@ -50,11 +45,6 @@ const initialFormData: FormData = {
   email: "",
   phone: "",
   businessName: "",
-  runAds: "",
-  adSpending: "",
-  adManager: "",
-  monthlyRevenue: "",
-  additionalInfo: "",
   agreedToTerms: false,
 };
 
@@ -69,7 +59,7 @@ export default function Book() {
   };
 
   const validateForm = (): boolean => {
-    if (!formData.firstName || !formData.lastName || !formData.email || !formData.businessName || !formData.monthlyRevenue) {
+    if (!formData.firstName || !formData.lastName || !formData.email || !formData.businessName) {
       toast.error("Please fill in all required fields");
       return false;
     }
@@ -267,100 +257,7 @@ export default function Book() {
               />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-              <div className="space-y-3">
-                <Label className="text-foreground font-semibold">
-                  Current Monthly Revenue <span className="text-destructive">*</span>
-                </Label>
-                <Select
-                  value={formData.monthlyRevenue}
-                  onValueChange={(value) => updateFormData("monthlyRevenue", value)}
-                >
-                  <SelectTrigger className="bg-input border-border md:w-[280px]">
-                    <SelectValue placeholder="Select revenue range" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="under-10k">Under $10k</SelectItem>
-                    <SelectItem value="10k-30k">$10k - $30k</SelectItem>
-                    <SelectItem value="30k-80k">$30k - $80k</SelectItem>
-                    <SelectItem value="80k-150k">$80k - $150k</SelectItem>
-                    <SelectItem value="150k+">$150k+</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
 
-              <div className="space-y-3">
-                <Label className="text-foreground font-semibold">Do you currently run ads for your med spa?</Label>
-                <RadioGroup
-                  value={formData.runAds}
-                  onValueChange={(value) => updateFormData("runAds", value)}
-                  className="flex gap-6 pt-2"
-                >
-                  <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="yes" id="ads-yes" />
-                    <Label htmlFor="ads-yes">Yes</Label>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="no" id="ads-no" />
-                    <Label htmlFor="ads-no">No</Label>
-                  </div>
-                </RadioGroup>
-              </div>
-            </div>
-
-            {formData.runAds === "yes" && (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-                <div className="space-y-3">
-                  <Label className="text-foreground font-semibold">Monthly ad spending</Label>
-                  <Select
-                    value={formData.adSpending}
-                    onValueChange={(value) => updateFormData("adSpending", value)}
-                  >
-                    <SelectTrigger className="bg-input border-border">
-                      <SelectValue placeholder="Select spending range" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="under-1k">Under $1,000</SelectItem>
-                      <SelectItem value="1k-3k">$1,000 - $3,000</SelectItem>
-                      <SelectItem value="3k-5k">$3,000 - $5,000</SelectItem>
-                      <SelectItem value="5k-10k">$5,000 - $10,000</SelectItem>
-                      <SelectItem value="10k+">$10,000+</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <div className="space-y-3">
-                  <Label className="text-foreground font-semibold">Who manages your ads?</Label>
-                  <Select
-                    value={formData.adManager}
-                    onValueChange={(value) => updateFormData("adManager", value)}
-                  >
-                    <SelectTrigger className="bg-input border-border">
-                      <SelectValue placeholder="Select who manages ads" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="in-house">We manage them ourselves</SelectItem>
-                      <SelectItem value="agency">An ads agency</SelectItem>
-                      <SelectItem value="freelancer">A freelancer/contractor</SelectItem>
-                      <SelectItem value="mix">Mix of in-house and external</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-              </div>
-            )}
-
-            <div className="space-y-2 mt-6">
-              <Label htmlFor="additionalInfo" className="text-foreground font-semibold">
-                Anything else you'd like us to know?
-              </Label>
-              <Textarea
-                id="additionalInfo"
-                placeholder="Any specific questions or requirements..."
-                value={formData.additionalInfo}
-                onChange={(e) => updateFormData("additionalInfo", e.target.value)}
-                className="bg-input border-border focus:border-[oklch(0.5_0.2_250)] min-h-[100px]"
-              />
-            </div>
 
             <div className="pt-4 mt-6">
               <div className="flex items-start space-x-3 p-4 rounded-lg border border-border/50 bg-black/20">
