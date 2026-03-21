@@ -47,7 +47,7 @@ export default function Home() {
     },
     {
       question: "Do you offer a guarantee?",
-      answer: "Yes. We exclusively partner with LHR clinics, which means our system is proven. We guarantee we will double your qualified consults in 30 days, or you don't pay for the system."
+      answer: "Yes. We exclusively partner with LHR clinics, which means our system is proven. We guarantee we will add $20k in booked consultations in 90 days, or we work for free until you do."
     }
   ];
 
@@ -136,7 +136,7 @@ export default function Home() {
         <div
           className="pointer-events-none absolute inset-0 z-0 transition-opacity duration-300"
           style={{
-            background: `radial-gradient(800px circle at ${mousePos.x}px ${mousePos.y}px, rgba(72,207,203,0.08), transparent 40%)`
+            background: `radial-gradient(800px circle at ${mousePos.x}px ${mousePos.y}px, rgba(72,207,203,0.15), transparent 45%)`
           }}
         />
 
@@ -510,9 +510,9 @@ export default function Home() {
           <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-[#48CFCB]/30 bg-[#48CFCB]/10 text-[#48CFCB] font-['JetBrains_Mono',monospace] text-sm tracking-widest mb-10 font-bold uppercase shadow-[0_0_20px_rgba(72,207,203,0.1)]">
             <LogoIcon className="w-4 h-4" /> THE PERFORMANCE GUARANTEE
           </div>
-          <h2 className="font-['Space_Grotesk',sans-serif] text-5xl md:text-7xl lg:text-[6rem] font-bold mb-8 leading-[1.05]">
-            Double Your Bookings <br className="hidden md:block" />in 30 Days. <br className="md:hidden" />
-            <span className="text-gray-500 text-4xl md:text-6xl lg:text-[4.5rem] mt-4 block">Or You Don't Pay.</span>
+          <h2 className="font-['Space_Grotesk',sans-serif] text-4xl md:text-6xl lg:text-[5.5rem] font-bold mb-8 leading-[1.05] tracking-tight">
+            Add $20k in Booked Consultations <br className="hidden xl:block" />in 90 Days. <br className="xl:hidden" />
+            <span className="text-gray-500 text-3xl md:text-5xl lg:text-[3.5rem] mt-4 block">Or We Work for Free Until You Do.</span>
           </h2>
           <p className="text-xl md:text-2xl text-gray-400 max-w-3xl text-center mb-16 leading-relaxed">
             Stop losing weekend leads and burning out your front desk. Implement a 24/7 acquisition architecture that autonomously turns clicks into booked LHR consultations.

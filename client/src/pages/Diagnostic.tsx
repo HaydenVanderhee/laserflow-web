@@ -136,14 +136,6 @@ export default function Diagnostic() {
             toast.error("Please provide your average LTV.");
             return false;
         }
-        if (!formData.deadLeads) {
-            toast.error("Please provide the number of dead leads in your database.");
-            return false;
-        }
-        if (!formData.inquiryResponseTime) {
-            toast.error("Please select an inquiry response time.");
-            return false;
-        }
         if (!formData.agreedToAssessment) {
             toast.error("Please acknowledge the assessment criteria.");
             return false;
@@ -274,7 +266,7 @@ export default function Diagnostic() {
             </div>
 
             {/* --- FORM CONTAINER --- */}
-            <div id="form-section" className="relative z-20 w-full max-w-7xl mx-auto px-4 md:px-8 pb-24 -mt-[4vh]">
+            <div id="form-section" className="relative z-20 w-full max-w-7xl mx-auto px-4 md:px-8 pb-24 mt-2">
                 {/* Split Screen Container (Steps 1, 2, 3) */}
                 <div className="w-full flex flex-col lg:flex-row rounded-3xl overflow-hidden border border-slate-800 shadow-2xl relative bg-[#0B1120] lg:h-[780px]">
 
@@ -285,13 +277,18 @@ export default function Diagnostic() {
                             animate={{ opacity: 1, x: 0 }}
                             className="mb-12"
                         >
-                            <h1 className="text-3xl md:text-4xl font-bold font-[family-name:var(--font-display)] mb-4 text-white">
-                                Call Confirmed.<br />
-                                <span className="text-[#0EA5E9]">Final Step.</span>
-                            </h1>
-                            <p className="text-slate-400 text-lg">
-                                Please complete this technical diagnostic so our architects can map your current lead flow before our call.
-                            </p>
+                            <h2 className="text-3xl md:text-4xl font-bold font-[family-name:var(--font-display)] mb-4 text-white">
+                                Session Booked.<br />
+                                <span className="text-[#0EA5E9]">Next Steps.</span>
+                            </h2>
+                            <div className="space-y-4">
+                                <p className="text-slate-300 text-lg leading-relaxed">
+                                    Please complete this technical diagnostic so our architects can map your current lead flow before our call.
+                                </p>
+                                <p className="text-slate-500 text-[15px] leading-relaxed">
+                                    Your clinic's data is strictly confidential. This assessment is used exclusively by our architects to engineer your custom infrastructure blueprint.
+                                </p>
+                            </div>
                         </motion.div>
 
                         {/* Timeline */}
@@ -387,11 +384,14 @@ export default function Diagnostic() {
                                                     <SelectValue placeholder="Select revenue range" />
                                                 </SelectTrigger>
                                                 <SelectContent className="bg-[#131B2F] border-slate-700 text-white shadow-2xl">
-                                                    <SelectItem value="under-10k" className="focus:bg-[#0EA5E9]/20 focus:text-white py-3 leading-loose">Under $10k</SelectItem>
-                                                    <SelectItem value="10k-30k" className="focus:bg-[#0EA5E9]/20 focus:text-white py-3 leading-loose">$10k - $30k</SelectItem>
-                                                    <SelectItem value="30k-80k" className="focus:bg-[#0EA5E9]/20 focus:text-white py-3 leading-loose">$30k - $80k</SelectItem>
-                                                    <SelectItem value="80k-150k" className="focus:bg-[#0EA5E9]/20 focus:text-white py-3 leading-loose">$80k - $150k</SelectItem>
-                                                    <SelectItem value="150k+" className="focus:bg-[#0EA5E9]/20 focus:text-white py-3 leading-loose">$150k+</SelectItem>
+                                                    <SelectItem value="under-50k" className="focus:bg-[#0EA5E9]/20 focus:text-white py-3 leading-loose">Under $50k</SelectItem>
+                                                    <SelectItem value="50k-100k" className="focus:bg-[#0EA5E9]/20 focus:text-white py-3 leading-loose">$50k - $100k</SelectItem>
+                                                    <SelectItem value="100k-150k" className="focus:bg-[#0EA5E9]/20 focus:text-white py-3 leading-loose">$100k - $150k</SelectItem>
+                                                    <SelectItem value="150k-250k" className="focus:bg-[#0EA5E9]/20 focus:text-white py-3 leading-loose">$150k - $250k</SelectItem>
+                                                    <SelectItem value="250k-400k" className="focus:bg-[#0EA5E9]/20 focus:text-white py-3 leading-loose">$250k - $400k</SelectItem>
+                                                    <SelectItem value="400k-600k" className="focus:bg-[#0EA5E9]/20 focus:text-white py-3 leading-loose">$400k - $600k</SelectItem>
+                                                    <SelectItem value="600k-1m" className="focus:bg-[#0EA5E9]/20 focus:text-white py-3 leading-loose">$600k - $1M</SelectItem>
+                                                    <SelectItem value="1m+" className="focus:bg-[#0EA5E9]/20 focus:text-white py-3 leading-loose">$1M+</SelectItem>
                                                 </SelectContent>
                                             </Select>
                                         </div>
@@ -688,51 +688,7 @@ export default function Diagnostic() {
                                                 </Select>
                                             </div>
 
-                                            <div className="space-y-3">
-                                                <Label htmlFor="deadLeads" className="text-slate-300">
-                                                    How many unconverted, dead leads are currently sitting in your database? <span className="text-red-500">*</span>
-                                                </Label>
-                                                <Input
-                                                    id="deadLeads"
-                                                    type="number"
-                                                    placeholder="e.g. 500"
-                                                    value={formData.deadLeads}
-                                                    onChange={(e) => updateFormData("deadLeads", e.target.value)}
-                                                    className="bg-[#131B2F] border-slate-700 md:w-1/2 focus-visible:ring-1 focus-visible:ring-[#0EA5E9] focus-visible:border-[#0EA5E9] transition-all text-white placeholder:text-slate-600 shadow-[inset_0_1px_2px_rgba(0,0,0,0.3)] h-auto py-3.5"
-                                                />
-                                            </div>
-
-                                            <div className="space-y-3">
-                                                <Label className="text-slate-300 leading-relaxed max-w-2xl block pb-1">
-                                                    If a lead submits a pricing inquiry at 9:00 PM on a Saturday, how long until a human staff member initiates a two-way SMS? <span className="text-red-500">*</span>
-                                                </Label>
-                                                <Select
-                                                    value={formData.inquiryResponseTime}
-                                                    onValueChange={(value) => updateFormData("inquiryResponseTime", value)}
-                                                >
-                                                    <SelectTrigger className="bg-[#131B2F] border-slate-700 focus:ring-[#0EA5E9] md:w-2/3 text-white h-auto p-3.5">
-                                                        <SelectValue placeholder="Select expected response time" />
-                                                    </SelectTrigger>
-                                                    <SelectContent className="bg-[#131B2F] border-slate-700 text-white shadow-2xl">
-                                                        <SelectItem value="1-2-hours" className="focus:bg-[#0EA5E9]/20 focus:text-white py-3">1-2 Hours</SelectItem>
-                                                        <SelectItem value="next-morning" className="focus:bg-[#0EA5E9]/20 focus:text-white py-3">Next Morning</SelectItem>
-                                                        <SelectItem value="monday-morning" className="focus:bg-[#0EA5E9]/20 focus:text-white py-3">Monday Morning</SelectItem>
-                                                        <SelectItem value="fall-through" className="focus:bg-[#0EA5E9]/20 focus:text-white py-3">They fall through the cracks</SelectItem>
-                                                    </SelectContent>
-                                                </Select>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div className="h-px bg-slate-800/80 my-8 w-full" />
-
-                                    {/* Section 2: Additional Context & Compliance */}
-                                    <div className="pt-8 mb-8">
-                                        <h2 className="text-xl font-semibold text-white mb-6 font-[family-name:var(--font-display)] flex items-center gap-3">
-                                            <span className="w-7 h-7 rounded-full bg-[#0EA5E9]/15 text-[#0EA5E9] flex items-center justify-center text-sm border border-[#0EA5E9]/30">4</span>
-                                            Additional Context & Compliance
-                                        </h2>
-                                        <div className="space-y-8">
+                                            {/* Additional Context & Compliance */}
                                             <div className="space-y-3">
                                                 <Label htmlFor="additionalInfo" className="text-slate-400">
                                                     Anything else you'd like us to know? (Optional)
@@ -815,7 +771,7 @@ export default function Diagnostic() {
                                             </span>
                                         ) : (
                                             <span className="flex items-center gap-2">
-                                                Submit Request
+                                                Submit Form
                                                 <Send className="w-5 h-5 ml-1" />
                                             </span>
                                         )}
@@ -834,6 +790,18 @@ export default function Diagnostic() {
                             )}
                         </motion.div>
                     </div>
+
+                    {/* Bottom Scroll Fade/Blur Indicator (Desktop Only) */}
+                    <div 
+                        className="hidden lg:block absolute bottom-0 right-0 w-[60%] h-32 pointer-events-none z-10 rounded-br-3xl"
+                        style={{
+                            background: 'linear-gradient(to top, #0B1120 20%, rgba(11, 17, 32, 0) 100%)',
+                            backdropFilter: 'blur(2px)',
+                            WebkitBackdropFilter: 'blur(2px)',
+                            maskImage: 'linear-gradient(to top, black 40%, transparent 100%)',
+                            WebkitMaskImage: 'linear-gradient(to top, black 40%, transparent 100%)'
+                        }}
+                    />
                 </div>
             </div>
         </div>
