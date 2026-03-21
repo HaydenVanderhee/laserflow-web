@@ -136,10 +136,6 @@ export default function Diagnostic() {
             toast.error("Please provide your average LTV.");
             return false;
         }
-        if (!formData.agreedToAssessment) {
-            toast.error("Please acknowledge the assessment criteria.");
-            return false;
-        }
         if (!formData.agreedToTerms) {
             toast.error("Please agree to the Terms & Conditions and Privacy Policy.");
             return false;
@@ -165,7 +161,7 @@ export default function Diagnostic() {
 
         setIsSubmitting(true);
         try {
-            const response = await fetch("https://hook.us2.make.com/qcrueqy5xlocrj644gc5tfp8gicon578", {
+            const response = await fetch("https://hook.us2.make.com/d27x65wd9mouxn174hzv1xo755y2k1ov", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -703,17 +699,7 @@ export default function Diagnostic() {
                                             </div>
 
                                             <div className="space-y-5 bg-[#080C17] p-6 rounded-xl border border-slate-800/80">
-                                                <div className="flex items-start space-x-4">
-                                                    <Checkbox
-                                                        id="agreedToAssessment"
-                                                        checked={formData.agreedToAssessment}
-                                                        onCheckedChange={(checked) => updateFormData("agreedToAssessment", checked === true)}
-                                                        className="mt-1 w-5 h-5 data-[state=checked]:bg-[#0EA5E9] data-[state=checked]:border-[#0EA5E9] border-slate-600"
-                                                    />
-                                                    <Label htmlFor="agreedToAssessment" className="text-sm font-normal text-slate-300 leading-relaxed cursor-pointer pt-0.5">
-                                                        I understand that LaserFlow operates as an Enterprise AI Infrastructure partner, and this call is specifically to assess if we qualify for the Phase 1 Reactivation Protocol. <span className="text-red-500">*</span>
-                                                    </Label>
-                                                </div>
+
 
                                                 <div className="flex items-start space-x-4">
                                                     <Checkbox
