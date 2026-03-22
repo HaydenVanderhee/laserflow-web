@@ -108,6 +108,10 @@ export default function Diagnostic() {
     };
 
     const validateStep1 = (): boolean => {
+        if (!formData.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+            toast.error("Please enter a valid email address.");
+            return false;
+        }
         if (!formData.monthlyRevenue) {
             toast.error("Please explicitly select your Current Monthly Revenue.");
             return false;
@@ -161,7 +165,7 @@ export default function Diagnostic() {
 
         setIsSubmitting(true);
         try {
-            const response = await fetch("https://hook.us2.make.com/lvheyfia8zf9cl4od4qswmc60nj5pgcq", {
+            const response = await fetch("https://hook.us2.make.com/p3w1oqmpokheg4fpeod8zt6saea79jj8", {
                 method: "POST",
                 headers: {
                     "Content-Type": "text/plain",
@@ -368,6 +372,20 @@ export default function Diagnostic() {
                                     </div>
 
                                     <div className="space-y-8">
+                                        <div className="space-y-3">
+                                            <Label htmlFor="email" className="text-slate-300 font-semibold text-[15px]">
+                                                Email Address <span className="text-red-500">*</span>
+                                            </Label>
+                                            <Input
+                                                id="email"
+                                                type="email"
+                                                placeholder="Enter your email address"
+                                                value={formData.email}
+                                                onChange={(e) => updateFormData("email", e.target.value)}
+                                                className="bg-[#131B2F] border-slate-700 focus-visible:ring-1 focus-visible:ring-[#0EA5E9] focus-visible:border-[#0EA5E9] transition-all text-white placeholder:text-slate-600 shadow-[inset_0_1px_2px_rgba(0,0,0,0.3)] h-auto py-3.5"
+                                            />
+                                        </div>
+
                                         <div className="space-y-3">
                                             <Label className="text-slate-300 font-semibold text-[15px]">
                                                 Current Monthly Revenue <span className="text-red-500">*</span>
