@@ -161,7 +161,7 @@ export default function Diagnostic() {
 
         setIsSubmitting(true);
         try {
-            const response = await fetch("https://hook.us2.make.com/p3w1oqmpokheg4fpeod8zt6saea79jj8", {
+            const response = await fetch("https://hook.us2.make.com/lvheyfia8zf9cl4od4qswmc60nj5pgcq", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
