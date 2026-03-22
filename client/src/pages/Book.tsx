@@ -29,6 +29,7 @@ import {
   ChevronDown,
 } from "lucide-react";
 import { toast } from "sonner";
+import { useLocation } from "wouter";
 
 interface FormData {
   firstName: string;
@@ -49,6 +50,7 @@ const initialFormData: FormData = {
 };
 
 export default function Book() {
+  const [, setLocation] = useLocation();
   const [formData, setFormData] = useState<FormData>(initialFormData);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -91,12 +93,17 @@ export default function Book() {
         throw new Error("Failed to submit to webhook");
       }
 
-      // Open booking page in new tab
-      window.open("https://api.leadconnectorhq.com/widget/bookings/discovery-call-1ct8u", "_blank");
-
       setIsSubmitting(false);
-      setIsSubmitted(true);
-      toast.success("Your booking request has been submitted!");
+      
+      // Redirect to /diagnostic passing data explicitly for Make.com deduplication
+      const queryParams = new URLSearchParams({
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        phone: formData.phone,
+      }).toString();
+
+      setLocation(`/diagnostic?${queryParams}`);
     } catch (error) {
       console.error("Submission error:", error);
       toast.error("An error occurred during submission. Please try again.");
