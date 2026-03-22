@@ -665,14 +665,14 @@ export default function Diagnostic() {
 
                                             <div className="space-y-3">
                                                 <Label className="text-slate-300">
-                                                    What is your current average LTV for a full-body laser package? <span className="text-red-500">*</span>
+                                                    What is your average LTV per patient? <span className="text-red-500">*</span>
                                                 </Label>
                                                 <Select
                                                     value={formData.averageLtv}
                                                     onValueChange={(value) => updateFormData("averageLtv", value)}
                                                 >
                                                     <SelectTrigger className="bg-[#131B2F] border-slate-700 md:w-1/2 focus:ring-[#0EA5E9] text-white h-auto py-3.5">
-                                                        <SelectValue placeholder="Select average LTV" />
+                                                        <SelectValue placeholder="Select average LTV per patient" />
                                                     </SelectTrigger>
                                                     <SelectContent className="bg-[#131B2F] border-slate-700 text-white shadow-2xl">
                                                         <SelectItem value="under-1k" className="focus:bg-[#0EA5E9]/20 focus:text-white">Under $1,000</SelectItem>
