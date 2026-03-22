@@ -164,7 +164,7 @@ export default function Diagnostic() {
             const response = await fetch("https://hook.us2.make.com/lvheyfia8zf9cl4od4qswmc60nj5pgcq", {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json",
+                    "Content-Type": "text/plain",
                 },
                 body: JSON.stringify(formData),
             });

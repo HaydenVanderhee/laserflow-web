@@ -84,7 +84,7 @@ export default function Book() {
       const response = await fetch("https://hook.us2.make.com/2qk018h9agzh2obxi965lejo04w8a65e", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "text/plain",
         },
         body: JSON.stringify(formData),
       });
