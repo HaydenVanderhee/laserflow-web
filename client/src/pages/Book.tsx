@@ -103,7 +103,7 @@ export default function Book() {
         phone: formData.phone,
       }).toString();
 
-      setLocation(`/diagnostic?${queryParams}`);
+      setLocation(`/booked?${queryParams}`);
     } catch (error) {
       console.error("Submission error:", error);
       toast.error("An error occurred during submission. Please try again.");
