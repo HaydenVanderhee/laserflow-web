@@ -103,7 +103,7 @@ export default function Book() {
         phone: formData.phone,
       }).toString();
 
-      setLocation(`/booked?${queryParams}`);
+      window.location.href = `https://api.leadconnectorhq.com/widget/bookings/discovery-call-1ct8u?${queryParams}`;
     } catch (error) {
       console.error("Submission error:", error);
       toast.error("An error occurred during submission. Please try again.");
