@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import { ArrowRight, Activity, Check, ChevronDown } from "lucide-react";
+import { ArrowRight, Activity, Check, ChevronDown, Target, Magnet, Zap, PhoneOff, UserCheck, LayoutTemplate, Database, Star, Search } from "lucide-react";
 import { Link } from "wouter";
 import { LogoIcon } from "../components/LogoIcon";
 
@@ -400,12 +400,244 @@ export default function Home() {
                 </div>
               </div>
             </div>
+
+            {/* Card 5: Scaleable Partnership (Full Width Row) */}
+            <div className="bg-[#12121A] md:col-span-2 rounded-3xl border border-white/10 p-8 md:p-12 relative overflow-hidden flex flex-col justify-between shadow-xl group hover:border-[#48CFCB]/30 transition-colors duration-500">
+              <div className="absolute top-6 left-6 font-['JetBrains_Mono',monospace] text-[#48CFCB] text-xs font-bold tracking-widest bg-[#48CFCB]/10 px-3 py-1.5 rounded-full border border-[#48CFCB]/20 z-10 transition-colors group-hover:bg-[#48CFCB]/20">Step 05</div>
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_100%,rgba(72,207,203,0.05),transparent_60%)] pointer-events-none" />
+
+              <div className="mt-12 mb-4 relative z-10 w-full max-w-4xl mx-auto text-center md:text-left md:ml-0">
+                <h2 className="font-['Space_Grotesk',sans-serif] text-4xl md:text-5xl font-bold mb-6 leading-tight flex flex-col md:flex-row md:items-center">
+                  Scaleable
+                  <span className="text-transparent md:ml-2 bg-clip-text bg-gradient-to-r from-[#48CFCB] to-blue-400">Partnership.</span>
+                </h2>
+                <p className="text-lg text-gray-400 leading-relaxed">
+                  This step is about helping your clinic scale aggressively <em>after</em> the initial AI agents and ad campaigns are deployed. We transition into a long-term growth partner dedicated to filling new physical clinic locations, developing custom website architectures, algorithmically reactivating old lead databases, and building specialized operational software crafted strictly for your unique needs.
+                </p>
+              </div>
+
+              {/* Minimal abstract data grid to act as a sleek visual anchor */}
+              <div className="relative w-full h-[120px] mt-8 border border-white/5 bg-[#0D0D12]/80 backdrop-blur rounded-xl p-6 flex flex-col justify-center overflow-hidden shadow-inner">
+                 <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:30px_30px]" />
+                 <div className="absolute top-1/2 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#48CFCB]/40 to-transparent mx-8 -translate-y-1/2" />
+                 <div className="absolute top-1/2 left-1/2 w-4 h-4 bg-[#48CFCB] rounded-full shadow-[0_0_20px_#48CFCB] -translate-x-1/2 -translate-y-1/2 animate-pulse" />
+                 <div className="absolute top-1/2 left-[25%] w-2 h-2 bg-white rounded-full shadow-[0_0_10px_white] -translate-x-1/2 -translate-y-1/2" />
+                 <div className="absolute top-1/2 left-[75%] w-2 h-2 bg-white rounded-full shadow-[0_0_10px_white] -translate-x-1/2 -translate-y-1/2" />
+                 <span className="absolute bottom-4 right-6 font-['JetBrains_Mono',monospace] text-[10px] text-[#48CFCB]/70 tracking-widest">SCALING_PROTOCOL_INITIATED</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* WHAT WE OFFER SECTION */}
+      <section className="py-24 px-6 md:px-20 bg-[#060913] relative z-20 border-t border-white/5">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col items-center mb-16">
+            <h2 className="font-['Space_Grotesk',sans-serif] text-4xl md:text-5xl font-bold mb-4 text-center">
+              What We <span className="text-[#48CFCB]">Offer</span>
+            </h2>
+            <p className="text-gray-400 text-center text-lg max-w-2xl mx-auto leading-relaxed">
+              We deploy the complete architecture needed to rapidly scale premium aesthetic clinics without overwhelming your staff.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              {
+                title: "Personalised Ads",
+                description: "High-converting, fully customized ad creatives designed specifically to attract premium Laser Hair Removal clientele.",
+                image: "/images/purple-dashboard.png",
+                mockup: "none"
+              },
+              {
+                title: "Lead Capture",
+                description: "Intelligent systems that capture, qualify, and nurture inbound prospects 24/7. Never miss an opportunity again.",
+                image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80",
+                mockup: "laptop"
+              },
+              {
+                title: "Instant Responses",
+                description: "AI-powered texting responses to client inquiries within seconds, maintaining high engagement around the clock.",
+                image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80",
+                mockup: "phone"
+              },
+              {
+                title: "OOO Handling",
+                description: "Seamless call and message management when you're away. Your AI assistant handles inquiries professionally on weekends.",
+                image: "",
+                mockup: "ai-agent"
+              },
+              {
+                title: "Client Onboarding",
+                description: "Streamlined onboarding workflows that gently guide new clients through clinic forms, consents, and preparation.",
+                image: "",
+                mockup: "sms-chat"
+              },
+              {
+                title: "Custom Websites",
+                description: "Stunning, high-performance web architecture that not only looks incredible but actively drives patient conversions.",
+                image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80",
+                mockup: "laptop"
+              },
+              {
+                title: "CRM Management",
+                description: "Deep API integrations connecting your active lead sources directly to our parsing engine for total operational visibility.",
+                image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80",
+                mockup: "none"
+              },
+              {
+                title: "Google Review Management",
+                description: "Automated text protocols to capture 5-star reviews from satisfied patients while intercepting negative private feedback.",
+                image: "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&w=600&q=80",
+                mockup: "phone"
+              },
+              {
+                title: "SEO Optimization",
+                description: "Long-term organic growth strategies ensuring your specific local clinic ranks #1 for high-intent nearby search traffic.",
+                image: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=600&q=80",
+                mockup: "laptop"
+              }
+            ].map((service, index) => {
+              return (
+              <div key={index} className="bg-[#0B0D15] rounded-3xl border border-white/5 p-6 md:p-8 flex flex-col hover:border-[#48CFCB]/40 transition-colors duration-500 group shadow-lg">
+                {/* Image / Mockup Container */}
+                <div className={`w-full h-48 md:h-56 rounded-2xl bg-gradient-to-b from-[#161822] to-[#0B0D15] overflow-hidden relative border border-white/5 mb-8 flex flex-col shadow-inner group-hover:from-[#1C1E2B] transition-colors ${service.mockup === 'none' ? 'p-0' : 'items-center justify-end px-4 pt-6'}`}>
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(72,207,203,0.05),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+                  
+                  {service.mockup === "laptop" && (
+                    <div className="relative w-full max-w-[280px] mx-auto transform group-hover:-translate-y-1 transition-transform duration-500 z-10 flex flex-col items-center">
+                      <div className="w-full aspect-[16/10] bg-[#12121A] border-[3px] border-[#2A2A35] rounded-t-xl relative overflow-hidden shadow-2xl flex flex-col">
+                        <div className="w-full h-3 bg-[#1A1A24] border-b border-[#2A2A35] flex items-center px-1.5 space-x-1 shrink-0">
+                           <div className="w-1.5 h-1.5 rounded-full bg-[#FF5F56]"></div>
+                           <div className="w-1.5 h-1.5 rounded-full bg-[#FFBD2E]"></div>
+                           <div className="w-1.5 h-1.5 rounded-full bg-[#27C93F]"></div>
+                        </div>
+                        <img src={service.image} alt={service.title} className="w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 transition-opacity" />
+                      </div>
+                      <div className="w-[115%] h-2.5 bg-[#2A2A35] rounded-b-lg shadow-2xl relative flex justify-center mt-[-1px]">
+                        <div className="w-12 h-1 bg-[#1A1A24] rounded-b-sm absolute top-0"></div>
+                      </div>
+                    </div>
+                  )}
+
+                  {service.mockup === "phone" && (
+                    <div className="relative w-[35%] max-w-[120px] mx-auto transform group-hover:-translate-y-1 transition-transform duration-500 z-10 mt-auto mb-2">
+                      <div className="w-full aspect-[9/19] bg-black border-[4px] border-[#2A2A35] rounded-[1.5rem] relative overflow-hidden shadow-2xl">
+                        <div className="absolute top-0 inset-x-0 h-3 bg-black rounded-b-lg w-[40%] mx-auto z-20"></div>
+                        <img src={service.image} alt={service.title} className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity" />
+                      </div>
+                    </div>
+                  )}
+
+                  {service.mockup === "none" && (
+                    <div className="w-full h-full relative">
+                      <img src={service.image} alt={service.title} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 relative z-10" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#0B0D15] via-transparent to-transparent opacity-90 z-20 pointer-events-none" />
+                    </div>
+                  )}
+
+                  {/* AI Agent - Dark techy robot */}
+                  {service.mockup === "ai-agent" && (
+                    <div className="w-full h-full flex items-center justify-center relative z-10">
+                      <div className="relative flex flex-col items-center">
+                        {/* Phone frame */}
+                        <div className="w-28 h-44 bg-[#1A1C2E] border-[3px] border-[#2E3148] rounded-2xl relative overflow-hidden shadow-[0_0_40px_rgba(72,207,203,0.15)]">
+                          <div className="absolute top-1 inset-x-0 w-8 h-1.5 bg-[#2E3148] rounded-full mx-auto"></div>
+                          {/* Robot face */}
+                          <div className="flex flex-col items-center justify-center h-full pt-3">
+                            <div className="w-14 h-12 bg-gradient-to-b from-[#48CFCB] to-[#3BA8A5] rounded-xl flex items-center justify-center mb-2 shadow-[0_0_20px_rgba(72,207,203,0.3)]">
+                              <div className="flex items-center space-x-2">
+                                <div className="w-3 h-3 bg-[#0B0D15] rounded-full"></div>
+                                <div className="w-3 h-3 bg-[#0B0D15] rounded-full"></div>
+                              </div>
+                            </div>
+                            <div className="w-5 h-5 border-2 border-[#48CFCB] rounded-full flex items-center justify-center mb-2">
+                              <div className="w-1.5 h-2 bg-[#48CFCB] rounded-sm"></div>
+                            </div>
+                            {/* Waveform */}
+                            <div className="flex items-end space-x-0.5 h-4">
+                              {[3,6,4,8,5,7,3,6,4].map((h,i) => (
+                                <div key={i} className="w-1 bg-[#48CFCB]/60 rounded-full animate-pulse" style={{height: `${h*2}px`, animationDelay: `${i*0.1}s`}}></div>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                        {/* Antenna */}
+                        <div className="absolute -top-3 left-1/2 -translate-x-1/2 flex flex-col items-center">
+                          <div className="w-2 h-2 bg-[#48CFCB] rounded-full shadow-[0_0_8px_rgba(72,207,203,0.6)]"></div>
+                          <div className="w-0.5 h-2 bg-[#2E3148]"></div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* SMS Chat mockup */}
+                  {service.mockup === "sms-chat" && (
+                    <div className="w-full h-full flex items-center justify-center relative z-10 p-3">
+                      <div className="w-full max-w-[260px] flex flex-col space-y-1.5">
+                        {/* Header */}
+                        <div className="flex items-center space-x-2 mb-1">
+                          <div className="w-5 h-5 rounded-full bg-[#48CFCB] flex items-center justify-center">
+                            <span className="text-[7px] font-bold text-[#0B0D15]">AI</span>
+                          </div>
+                          <div className="w-20 h-2 bg-gray-600/40 rounded-full"></div>
+                        </div>
+                        {/* AI message */}
+                        <div className="self-start w-[80%] bg-[#1E2035] rounded-2xl rounded-tl-sm px-3 py-2.5 flex flex-col space-y-1">
+                          <div className="w-full h-1.5 bg-gray-500/20 rounded-full"></div>
+                          <div className="w-3/4 h-1.5 bg-gray-500/20 rounded-full"></div>
+                        </div>
+                        {/* User message */}
+                        <div className="self-end w-[65%] bg-[#48CFCB] rounded-2xl rounded-tr-sm px-3 py-2.5 flex flex-col space-y-1">
+                          <div className="w-full h-1.5 bg-[#0B0D15]/20 rounded-full"></div>
+                          <div className="w-1/2 h-1.5 bg-[#0B0D15]/20 rounded-full"></div>
+                        </div>
+                        {/* AI message */}
+                        <div className="self-start w-[85%] bg-[#1E2035] rounded-2xl rounded-tl-sm px-3 py-2.5 flex flex-col space-y-1">
+                          <div className="w-full h-1.5 bg-gray-500/20 rounded-full"></div>
+                          <div className="w-5/6 h-1.5 bg-gray-500/20 rounded-full"></div>
+                        </div>
+                        {/* User message */}
+                        <div className="self-end w-[55%] bg-[#48CFCB] rounded-2xl rounded-tr-sm px-3 py-2.5 flex flex-col space-y-1">
+                          <div className="w-full h-1.5 bg-[#0B0D15]/20 rounded-full"></div>
+                        </div>
+                        {/* AI message */}
+                        <div className="self-start w-[70%] bg-[#1E2035] rounded-2xl rounded-tl-sm px-3 py-2.5 flex flex-col space-y-1">
+                          <div className="w-full h-1.5 bg-gray-500/20 rounded-full"></div>
+                          <div className="w-2/3 h-1.5 bg-gray-500/20 rounded-full"></div>
+                        </div>
+                        {/* User message */}
+                        <div className="self-end w-[60%] bg-[#48CFCB] rounded-2xl rounded-tr-sm px-3 py-2.5 flex flex-col space-y-1">
+                          <div className="w-full h-1.5 bg-[#0B0D15]/20 rounded-full"></div>
+                          <div className="w-1/3 h-1.5 bg-[#0B0D15]/20 rounded-full"></div>
+                        </div>
+                        {/* AI message */}
+                        <div className="self-start w-[75%] bg-[#1E2035] rounded-2xl rounded-tl-sm px-3 py-2.5 flex flex-col space-y-1">
+                          <div className="w-full h-1.5 bg-gray-500/20 rounded-full"></div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                {/* Content */}
+                <div className="flex flex-col text-center items-center flex-grow">
+                  <h3 className="font-['Space_Grotesk',sans-serif] text-xl font-bold text-white mb-3 tracking-wide">{service.title}</h3>
+                  <p className="text-gray-400 text-sm leading-relaxed mb-4 font-light opacity-80">
+                    {service.description}
+                  </p>
+                </div>
+              </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* F. FAQ SECTION */}
-      < section className="py-24 px-6 md:px-20 bg-[#0D0D12] relative z-20 border-t border-white/5" >
+      <section className="py-24 px-6 md:px-20 bg-[#0D0D12] relative z-20 border-t border-white/5">
         <div className="max-w-5xl mx-auto flex flex-col items-center">
           <h2 className="font-['Space_Grotesk',sans-serif] text-4xl md:text-5xl font-bold mb-12 text-center">Frequently Asked <span className="text-[#48CFCB]">Questions</span></h2>
           <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 items-start">
