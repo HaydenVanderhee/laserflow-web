@@ -265,6 +265,24 @@ export default function Diagnostic() {
                 </motion.div>
             </div>
 
+            {/* --- VIDEO SECTION --- */}
+            <div className="relative z-10 w-full max-w-3xl mx-auto px-4 md:px-8 py-8">
+                <p className="text-center text-slate-300 text-lg md:text-xl font-medium mb-6">
+                    Please watch this short video before filling out the form below
+                </p>
+                <div className="rounded-2xl overflow-hidden border border-slate-800 shadow-2xl bg-[#0B1120]">
+                    <video
+                        controls
+                        className="w-full"
+                        preload="metadata"
+                        playsInline
+                    >
+                        <source src="/Video%20Project%206.mp4" type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+
             {/* --- FORM CONTAINER --- */}
             <div id="form-section" className="relative z-20 w-full max-w-7xl mx-auto px-4 md:px-8 pb-24 mt-2">
                 {/* Split Screen Container (Steps 1, 2, 3) */}

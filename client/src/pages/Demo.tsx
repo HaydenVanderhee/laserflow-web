@@ -21,7 +21,7 @@ export default function Demo() {
             controls 
             autoPlay 
             playsInline
-            src="/Video%20Project%205.mp4"
+            src="/Video%20Project%207.mp4"
             poster="/logo.png"
           >
             Your browser does not support the video tag.
