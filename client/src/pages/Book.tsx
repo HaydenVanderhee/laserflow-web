@@ -57,6 +57,8 @@ export default function Book() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [showDisclaimer, setShowDisclaimer] = useState(false);
+  const [serviceSearch, setServiceSearch] = useState("");
+  const [serviceDropdownOpen, setServiceDropdownOpen] = useState(false);
 
   const updateFormData = (field: keyof FormData, value: any) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -303,21 +305,19 @@ export default function Book() {
               <div className="relative">
                 <Input
                   placeholder="Type to search services..."
-                  value={formData.serviceSearch || ""}
-                  onChange={(e) =>
-                    setFormData((prev) => ({ ...prev, serviceSearch: e.target.value } as any))
-                  }
-                  onFocus={() => setFormData((prev) => ({ ...prev, serviceDropdownOpen: true } as any))}
-                  onBlur={() => setTimeout(() => setFormData((prev) => ({ ...prev, serviceDropdownOpen: false } as any)), 200)}
+                  value={serviceSearch}
+                  onChange={(e) => setServiceSearch(e.target.value)}
+                  onFocus={() => setServiceDropdownOpen(true)}
+                  onBlur={() => setTimeout(() => setServiceDropdownOpen(false), 200)}
                   className="bg-input border-border focus:border-[#48CFCB]"
                 />
-                {(formData as any).serviceDropdownOpen && (
+                {serviceDropdownOpen && (
                   <div className="absolute z-50 top-full left-0 right-0 mt-1 bg-[#12121A] border border-border rounded-lg max-h-[200px] overflow-y-auto shadow-xl">
                     {["Laser Hair Removal", "Botox", "Dermal Fillers", "Skincare", "Body Contouring", "IV Therapy", "Microneedling", "Chemical Peels", "PRP Therapy", "Tattoo Removal", "Skin Tightening", "Fat Dissolving", "Other"]
                       .filter(
                         (s) =>
                           !formData.services.includes(s) &&
-                          s.toLowerCase().includes(((formData as any).serviceSearch || "").toLowerCase())
+                          s.toLowerCase().includes(serviceSearch.toLowerCase())
                       )
                       .map((service) => (
                         <button
@@ -328,8 +328,8 @@ export default function Book() {
                             setFormData((prev) => ({
                               ...prev,
                               services: [...prev.services, service],
-                              serviceSearch: "",
-                            } as any));
+                            }));
+                            setServiceSearch("");
                           }}
                           className="w-full text-left px-4 py-2.5 text-sm text-muted-foreground hover:bg-[#48CFCB]/10 hover:text-white transition-colors"
                         >
