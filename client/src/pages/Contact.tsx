@@ -65,10 +65,28 @@ export default function Contact() {
     }
 
     setIsSubmitting(true);
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    toast.success("Your message has been sent!");
+    try {
+      const response = await fetch("https://formspree.io/f/xykbyjrb", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send message");
+      }
+
+      setIsSubmitting(false);
+      setIsSubmitted(true);
+      toast.success("Your message has been sent!");
+    } catch (error) {
+      console.error("Submission error:", error);
+      toast.error("An error occurred. Please try again.");
+      setIsSubmitting(false);
+    }
   };
 
   if (isSubmitted) {

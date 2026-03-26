@@ -22,8 +22,12 @@ export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const faqs = [
     {
+      question: "Do you make personalised services for us?",
+      answer: "Nothing we deliver is copy and paste. Every ad campaign, AI agent, and system we build starts from a proven niche-specific blueprint tailored to your exact service type — whether that's LHR, Botox, fillers, or skincare — and is then custom-built around your clinic's unique brand, pricing, and workflows."
+    },
+    {
       question: "Can I customize the AI responses for my clinic?",
-      answer: "Yes. We don't use generic templates. We train the AI specifically on your clinic's pricing, your specific laser machines, and your cancellation policies."
+      answer: "Yes. We don't use generic templates. We train the AI specifically on your clinic's pricing, your specific clinic's services, down to the tools you use, and your cancellation policies."
     },
     {
       question: "What happens if a lead asks a complex medical question?",
@@ -47,27 +51,30 @@ export default function Home() {
     },
     {
       question: "Do you offer a guarantee?",
-      answer: "Yes. We exclusively partner with LHR clinics, which means our system is proven. We guarantee we will add $20k in booked consultations in 90 days, or we work for free until you do."
+      answer: "Yes. We exclusively partner with aesthetic clinics, which means our system is proven. We guarantee we will increase your bookings by 30% in 90 days, or we work with you for free until you do."
     }
   ];
 
   // D. Feature 1: Triage Engine Cards State
   const [triageCards, setTriageCards] = useState([
-    { id: 1, time: "23:42", name: "Sarah M.", intent: "Laser Hair Removal - Legs", status: "Booked" },
+    { id: 1, time: "23:42", name: "Sarah M.", intent: "Botox - Forehead & Frown", status: "Booked" },
     { id: 2, time: "21:15", name: "Jessica T.", intent: "Full Body LHR", status: "Booked" },
-    { id: 3, time: "19:30", name: "Emily R.", intent: "Bikini Line", status: "Booked" },
+    { id: 3, time: "19:30", name: "Emily R.", intent: "Dermal Filler - Lips", status: "Booked" },
   ]);
 
   useEffect(() => {
+    const services = ["LHR Consultation", "Botox - Forehead", "Dermal Filler - Lips", "Skin Rejuvenation", "Anti-Wrinkle Consult", "Full Body LHR", "Lip Filler Top-Up"];
+    let serviceIndex = 0;
     const interval = setInterval(() => {
       setTriageCards((prev) => {
         const newCard = {
           id: Date.now(),
           time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
           name: "New Lead",
-          intent: "LHR Consultation",
+          intent: services[serviceIndex % services.length],
           status: "Processing"
         };
+        serviceIndex++;
         return [newCard, ...prev.slice(0, 2)];
       });
     }, 4000);
@@ -161,11 +168,11 @@ export default function Home() {
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#48CFCB]/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
           </p>
           <h1 className="hero-element font-['Space_Grotesk',sans-serif] text-5xl md:text-6xl font-bold leading-[1.1] mb-8 text-[#FAF8F5]">
-            Double Your LHR Consults. <br />
+            Double Your Clinic Consults. <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FAF8F5] via-gray-300 to-gray-600">Zero Extra Staff.</span>
           </h1>
           <p className="hero-element text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed">
-            We install a 24/7 intelligent triage system that instantly answers pricing questions, handles pain objections, and books qualified appointments while your clinic is closed.
+            We install a 24/7 intelligent triage system that instantly answers pricing questions, handles pain objections, and books qualified appointments even while your clinic is closed.
           </p>
           <div className="hero-element flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/book">
@@ -313,8 +320,8 @@ export default function Home() {
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_0%_0%,rgba(72,207,203,0.08),transparent_50%)] pointer-events-none" />
 
               <div className="mt-12 mb-8 relative z-10 w-full md:w-[85%]">
-                <h2 className="font-['Space_Grotesk',sans-serif] text-4xl md:text-5xl font-bold mb-4 leading-tight">Precision LHR<br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#48CFCB] to-blue-400">Campaigns.</span></h2>
-                <p className="text-lg text-gray-400 leading-relaxed">High-converting, fully customized ad creatives designed specifically to attract premium Laser Hair Removal clientele, keeping your calendar full of high-intent buyers.</p>
+                <h2 className="font-['Space_Grotesk',sans-serif] text-4xl md:text-5xl font-bold mb-4 leading-tight">Precision Ad Campaigns<br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#48CFCB] to-blue-400">For Your Services.</span></h2>
+                <p className="text-lg text-gray-400 leading-relaxed">High-converting, fully customized ad creatives designed specifically to attract premium med spa clientele, keeping your calendar full of high-intent buyers.</p>
               </div>
 
               {/* Abstract Ad Animation */}
@@ -337,7 +344,7 @@ export default function Home() {
             </div>
 
             {/* Card 2 (Old Card 1) */}
-            <div className="bg-[#1A1A24] rounded-3xl border border-white/10 p-8 md:p-12 relative overflow-hidden flex flex-col justify-between shadow-xl min-h-[500px]">
+            <div className="bg-[#1A1A24] rounded-3xl border border-white/10 p-8 md:p-12 relative overflow-hidden flex flex-col justify-between shadow-xl min-h-[500px] group hover:border-[#48CFCB]/30 transition-colors duration-500">
               <div className="absolute top-6 left-6 font-['JetBrains_Mono',monospace] text-[#48CFCB] text-xs font-bold tracking-widest bg-[#48CFCB]/10 px-3 py-1.5 rounded-full border border-[#48CFCB]/20 z-10">Step 02</div>
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_0%_100%,rgba(72,207,203,0.05),transparent_60%)] pointer-events-none" />
 
@@ -355,7 +362,7 @@ export default function Home() {
             </div>
 
             {/* Card 3 (Old Card 2) */}
-            <div className="bg-[#12121A] rounded-3xl border border-white/10 p-8 md:p-12 relative overflow-hidden flex flex-col justify-between shadow-xl min-h-[500px]">
+            <div className="bg-[#12121A] rounded-3xl border border-white/10 p-8 md:p-12 relative overflow-hidden flex flex-col justify-between shadow-xl min-h-[500px] group hover:border-[#48CFCB]/30 transition-colors duration-500">
               <div className="absolute top-6 left-6 font-['JetBrains_Mono',monospace] text-[#48CFCB] text-xs font-bold tracking-widest bg-[#48CFCB]/10 px-3 py-1.5 rounded-full border border-[#48CFCB]/20 z-10">Step 03</div>
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_100%_0%,rgba(72,207,203,0.05),transparent_60%)] pointer-events-none" />
 
@@ -374,7 +381,7 @@ export default function Home() {
               </div>
             </div>
             {/* Card 4 (Now regular width) */}
-            <div className="bg-[#1A1A24] rounded-3xl border border-[#48CFCB]/20 p-8 md:p-12 relative overflow-hidden flex flex-col justify-between shadow-[0_0_50px_rgba(72,207,203,0.03)] min-h-[500px]">
+            <div className="bg-[#1A1A24] rounded-3xl border border-[#48CFCB]/20 p-8 md:p-12 relative overflow-hidden flex flex-col justify-between shadow-[0_0_50px_rgba(72,207,203,0.03)] min-h-[500px] group hover:border-[#48CFCB]/30 transition-colors duration-500">
               <div className="absolute top-6 left-6 font-['JetBrains_Mono',monospace] text-[#48CFCB] text-xs font-bold tracking-widest bg-[#48CFCB]/10 px-3 py-1.5 rounded-full border border-[#48CFCB]/20 z-10">Step 04</div>
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_100%_100%,rgba(72,207,203,0.05),transparent_60%)] pointer-events-none" />
 
@@ -447,7 +454,7 @@ export default function Home() {
             {[
               {
                 title: "Personalised Ads",
-                description: "High-converting, fully customized ad creatives designed specifically to attract premium Laser Hair Removal clientele.",
+                description: "High-converting, fully customized ad creatives designed specifically to attract premium specific service med spa clientele.",
                 image: "/images/purple-dashboard.png",
                 mockup: "none"
               },
@@ -640,7 +647,7 @@ export default function Home() {
       <section className="py-24 px-6 md:px-20 bg-[#0D0D12] relative z-20 border-t border-white/5">
         <div className="max-w-5xl mx-auto flex flex-col items-center">
           <h2 className="font-['Space_Grotesk',sans-serif] text-4xl md:text-5xl font-bold mb-12 text-center">Frequently Asked <span className="text-[#48CFCB]">Questions</span></h2>
-          <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 items-start">
+          <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 items-stretch">
             {faqs.map((faq, index) => (
               <div
                 key={index}
@@ -648,7 +655,7 @@ export default function Home() {
               >
                 <button
                   onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                  className="w-full text-left px-6 py-5 flex items-center justify-between font-bold text-lg md:text-xl focus:outline-none"
+                  className="w-full text-left px-6 py-5 flex items-center justify-between font-bold text-lg md:text-xl focus:outline-none min-h-[80px]"
                 >
                   {faq.question}
                   <ChevronDown className={`w-5 h-5 text-[#48CFCB] transition-transform duration-300 shrink-0 ${openFaq === index ? 'rotate-180' : ''}`} />
@@ -745,11 +752,11 @@ export default function Home() {
             <LogoIcon className="w-4 h-4" /> THE PERFORMANCE GUARANTEE
           </div>
           <h2 className="font-['Space_Grotesk',sans-serif] text-4xl md:text-6xl lg:text-[5.5rem] font-bold mb-8 leading-[1.05] tracking-tight">
-            Add $20k in Booked Consultations <br className="hidden xl:block" />in 90 Days. <br className="xl:hidden" />
+            Increase Your Bookings by 30% <br className="hidden xl:block" />in 90 Days. <br className="xl:hidden" />
             <span className="text-gray-500 text-3xl md:text-5xl lg:text-[3.5rem] mt-4 block">Or We Work for Free Until You Do.</span>
           </h2>
           <p className="text-xl md:text-2xl text-gray-400 max-w-3xl text-center mb-16 leading-relaxed">
-            Stop losing weekend leads and burning out your front desk. Implement a 24/7 acquisition architecture that autonomously turns clicks into booked LHR consultations.
+            Stop losing weekend leads and burning out your front desk. Implement a 24/7 acquisition architecture that autonomously turns clicks into booked consultations.
           </p>
           <Link href="/book">
             <button className="group relative px-12 py-6 bg-[#48CFCB] text-[#0D0D12] rounded-full font-bold text-xl hover:scale-[1.03] transition-all duration-300 flex items-center justify-center gap-3 font-['Inter',sans-serif] shadow-[0_0_50px_rgba(72,207,203,0.3)] hover:shadow-[0_0_80px_rgba(72,207,203,0.5)]">

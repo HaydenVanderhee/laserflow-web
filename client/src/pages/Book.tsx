@@ -37,6 +37,7 @@ interface FormData {
   email: string;
   phone: string;
   businessName: string;
+  services: string[];
   agreedToTerms: boolean;
 }
 
@@ -46,6 +47,7 @@ const initialFormData: FormData = {
   email: "",
   phone: "",
   businessName: "",
+  services: [],
   agreedToTerms: false,
 };
 
@@ -63,6 +65,10 @@ export default function Book() {
   const validateForm = (): boolean => {
     if (!formData.firstName || !formData.lastName || !formData.email || !formData.businessName) {
       toast.error("Please fill in all required fields");
+      return false;
+    }
+    if (formData.services.length === 0) {
+      toast.error("Please select at least one service your med spa offers");
       return false;
     }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
@@ -264,6 +270,84 @@ export default function Book() {
               />
             </div>
 
+            <div className="space-y-3 mt-6 relative">
+              <Label className="text-foreground font-semibold">
+                Services Your Med Spa Offers <span className="text-destructive">*</span>
+              </Label>
+              {/* Selected service chips */}
+              {formData.services.length > 0 && (
+                <div className="flex flex-wrap gap-2 mb-2">
+                  {formData.services.map((service) => (
+                    <span
+                      key={service}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#48CFCB]/15 border border-[#48CFCB]/30 text-[#48CFCB] text-sm font-medium"
+                    >
+                      {service}
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setFormData((prev) => ({
+                            ...prev,
+                            services: prev.services.filter((s) => s !== service),
+                          }))
+                        }
+                        className="hover:text-white transition-colors ml-0.5"
+                      >
+                        ×
+                      </button>
+                    </span>
+                  ))}
+                </div>
+              )}
+              {/* Search input */}
+              <div className="relative">
+                <Input
+                  placeholder="Type to search services..."
+                  value={formData.serviceSearch || ""}
+                  onChange={(e) =>
+                    setFormData((prev) => ({ ...prev, serviceSearch: e.target.value } as any))
+                  }
+                  onFocus={() => setFormData((prev) => ({ ...prev, serviceDropdownOpen: true } as any))}
+                  onBlur={() => setTimeout(() => setFormData((prev) => ({ ...prev, serviceDropdownOpen: false } as any)), 200)}
+                  className="bg-input border-border focus:border-[#48CFCB]"
+                />
+                {(formData as any).serviceDropdownOpen && (
+                  <div className="absolute z-50 top-full left-0 right-0 mt-1 bg-[#12121A] border border-border rounded-lg max-h-[200px] overflow-y-auto shadow-xl">
+                    {["Laser Hair Removal", "Botox", "Dermal Fillers", "Skincare", "Body Contouring", "IV Therapy", "Microneedling", "Chemical Peels", "PRP Therapy", "Tattoo Removal", "Skin Tightening", "Fat Dissolving", "Other"]
+                      .filter(
+                        (s) =>
+                          !formData.services.includes(s) &&
+                          s.toLowerCase().includes(((formData as any).serviceSearch || "").toLowerCase())
+                      )
+                      .map((service) => (
+                        <button
+                          key={service}
+                          type="button"
+                          onMouseDown={(e) => {
+                            e.preventDefault();
+                            setFormData((prev) => ({
+                              ...prev,
+                              services: [...prev.services, service],
+                              serviceSearch: "",
+                            } as any));
+                          }}
+                          className="w-full text-left px-4 py-2.5 text-sm text-muted-foreground hover:bg-[#48CFCB]/10 hover:text-white transition-colors"
+                        >
+                          {service}
+                        </button>
+                      ))}
+                  </div>
+                )}
+              </div>
+              <details className="mt-2 group">
+                <summary className="text-xs text-[#48CFCB] cursor-pointer inline-flex items-center gap-1 hover:text-[#48CFCB]/80 transition-colors select-none list-none [&::-webkit-details-marker]:hidden">
+                  Why is this required? <ChevronDown className="w-3 h-3 group-open:rotate-180 transition-transform duration-200" />
+                </summary>
+                <p className="text-xs text-muted-foreground/70 mt-2 leading-relaxed pl-0.5">
+                  This is a required field — it helps us build a custom growth plan specifically tailored to your services before the call, so we can hit the ground running.
+                </p>
+              </details>
+            </div>
 
 
             <div className="pt-4 mt-6">
