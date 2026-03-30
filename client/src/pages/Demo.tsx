@@ -10,8 +10,8 @@ export default function Demo() {
       <div className="max-w-4xl w-full flex flex-col items-center space-y-10 lg:space-y-12 z-10 relative mt-[-5vh]">
         {/* Headline */}
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[56px] font-bold font-[family-name:var(--font-display)] text-center text-white tracking-tight leading-[1.15]">
-          How Med Spas Are Automating <br className="hidden md:block"/> 
-          <span className="text-[#0EA5E9]">30+ Appointments a Month.</span>
+          Building Your Med Spa's Custom <br className="hidden md:block"/> 
+          <span className="text-[#0EA5E9]">Customer Acquisition System.</span>
         </h1>
         
         {/* Video Player */}
@@ -21,7 +21,7 @@ export default function Demo() {
             controls 
             autoPlay 
             playsInline
-            src="/Video%20Project%207.mp4"
+            src="/Video%20Project%208.mp4?v=3"
             poster="/logo.png"
           >
             Your browser does not support the video tag.

@@ -182,7 +182,7 @@ export default function Home() {
             </Link>
             <Link href="/demo">
               <button className="bg-[#21212B] text-white px-8 py-4 rounded-full font-bold text-sm md:text-base hover:scale-[1.03] hover:bg-[#2A2A35] transition-all flex items-center justify-center gap-2 shadow-lg w-full sm:w-auto">
-                Watch the 4-Minute Breakdown
+                Watch the Systems Breakdown
               </button>
             </Link>
           </div>
